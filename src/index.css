@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base font size — makes all rem-based text larger ===== */
+html {
+  font-size: 17px;
+}
+
+/* ===== DevCraft Theme Variables (dark only) ===== */
+:root {
+  --dc-text: 255 255 255;
+  --dc-bg: 11 10 8;
+  --dc-surface: 17 15 13;
+  --dc-card: 22 19 16;
+  --dc-input: 30 26 20;
+  --dc-border: 255 255 255;
+  --dc-muted: 180 170 155;
+}
+
+/* ===== Body theme binding ===== */
+body {
+  background-color: rgb(var(--dc-bg) / 1);
+  color: rgb(var(--dc-text) / 1);
+}
+
+/* Ensure all pages respond to theme */
+#root {
+  background-color: rgb(var(--dc-bg) / 1);
+  min-height: 100vh;
+}
+
+/* ===== Custom cursor — hide native on pointer/desktop devices ===== */
+@media (hover: hover) and (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
