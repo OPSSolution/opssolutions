@@ -5,34 +5,14 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 const offices = [
   {
-    city: "San Francisco",
-    country: "United States",
-    address: "548 Market St, Suite 29001, San Francisco, CA 94104",
-    phone: "+1 (415) 800-4200",
-    email: "sf@devcraftstudio.io",
-    timezone: "PST / UTC-8",
+    city: "Phnom Penh",
+    country: "Cambodia",
+    address: "TK Roundabout, 2nd Floor, Street 289, Sangkat Boeng Kak Ti Pir, Khan Toul Kork, Phnom Penh, Cambodia",
+    phone: "+855 10 660 661",
+    email: "info@ballangkmall.com",
+    timezone: "ICT / UTC+7",
     flag: "ri-map-pin-line",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2051695706016!2d-122.4009!3d37.7906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806b0b0b0b0b%3A0x0!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus",
-  },
-  {
-    city: "London",
-    country: "United Kingdom",
-    address: "20 Farringdon Rd, London, EC1M 3HE",
-    phone: "+44 20 3808 9400",
-    email: "london@devcraftstudio.io",
-    timezone: "GMT / UTC+0",
-    flag: "ri-map-pin-line",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.1!2d-0.105!3d51.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLondon!5e0!3m2!1sen!2suk!4v1700000000001!5m2!1sen!2suk",
-  },
-  {
-    city: "Singapore",
-    country: "Singapore",
-    address: "1 Raffles Place, #20-61 One Raffles Place, Singapore 048616",
-    phone: "+65 6977 4800",
-    email: "sg@devcraftstudio.io",
-    timezone: "SGT / UTC+8",
-    flag: "ri-map-pin-line",
-    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d103.851!3d1.284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSingapore!5e0!3m2!1sen!2ssg!4v1700000000002!5m2!1sen!2ssg",
+    mapSrc: "https://www.google.com/maps?q=TK+Roundabout,+Street+289,+Phnom+Penh,+Cambodia&output=embed",
   },
 ];
 
@@ -65,9 +45,9 @@ export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
 
   usePageMeta({
-    title: "Contact — Start a Project with Solutions Studio",
-    description: "Get in touch with Solutions Studio. Send your project brief and receive a scoped estimate within 48 hours. Offices in San Francisco, London and Singapore.",
-    canonical: "https://devcraftstudio.io/contact",
+    title: "Contact — Start a Project with OPS Solutions",
+    description: "Get in touch with OPS Solutions. Send your project brief and receive a scoped estimate within 48 hours. Based in Phnom Penh, Cambodia.",
+    canonical: "https://ballangkmall.com/contact",
     ogImage: "https://readdy.ai/api/search-image?query=modern%20tech%20startup%20office%20contact%20page%20three%20global%20offices%20map%20dark%20minimal%20professional%20studio%20interior&width=1200&height=630&seq=og_contact_v2&orientation=landscape",
   });
 
@@ -82,23 +62,19 @@ export default function ContactPage() {
       "@graph": [
         {
           "@type": "ContactPage",
-          "name": "Contact Solutions Studio",
-          "description": "Contact Solutions Studio for web development, mobile apps, AI integration, cloud architecture and UI/UX design services",
-          "url": "https://devcraftstudio.io/contact",
+          "name": "Contact OPS Solutions",
+          "description": "Contact OPS Solutions for web development, mobile apps, AI integration, cloud architecture and UI/UX design services",
+          "url": "https://ballangkmall.com/contact",
           "mainEntity": {
             "@type": "Organization",
-            "name": "Solutions Studio",
-            "url": "https://devcraftstudio.io",
+            "name": "OPS Solutions Co., Ltd.",
+            "url": "https://ballangkmall.com",
             "logo": "https://static.readdy.ai/image/27f36426f3cab7c4efebb6eb9e24cb04/3338f66b55262222ff9be144548b1ced.png",
             "contactPoint": [
-              { "@type": "ContactPoint", "telephone": "+1-415-800-4200", "contactType": "customer service", "areaServed": "US", "availableLanguage": "English" },
-              { "@type": "ContactPoint", "telephone": "+44-20-3808-9400", "contactType": "customer service", "areaServed": "GB", "availableLanguage": "English" },
-              { "@type": "ContactPoint", "telephone": "+65-6977-4800", "contactType": "customer service", "areaServed": "SG", "availableLanguage": "English" },
+              { "@type": "ContactPoint", "telephone": "+855-10-660-661", "contactType": "customer service", "areaServed": "KH", "availableLanguage": ["English", "Khmer"] },
             ],
             "address": [
-              { "@type": "PostalAddress", "streetAddress": "548 Market St, Suite 29001", "addressLocality": "San Francisco", "addressRegion": "CA", "postalCode": "94104", "addressCountry": "US" },
-              { "@type": "PostalAddress", "streetAddress": "20 Farringdon Rd", "addressLocality": "London", "postalCode": "EC1M 3HE", "addressCountry": "GB" },
-              { "@type": "PostalAddress", "streetAddress": "1 Raffles Place, #20-61", "addressLocality": "Singapore", "postalCode": "048616", "addressCountry": "SG" },
+              { "@type": "PostalAddress", "streetAddress": "TK Roundabout, 2nd Floor, Street 289, Sangkat Boeng Kak Ti Pir, Khan Toul Kork", "addressLocality": "Phnom Penh", "addressCountry": "KH" },
             ],
           },
         },
@@ -169,7 +145,7 @@ export default function ContactPage() {
           <button onClick={() => navigate("/")} className="flex items-center gap-2 cursor-pointer">
             <img
               src="https://static.readdy.ai/image/27f36426f3cab7c4efebb6eb9e24cb04/3338f66b55262222ff9be144548b1ced.png"
-              alt="Solutions Studio"
+              alt="OPS Solutions"
               className="h-9 w-auto object-contain"
             />
             <span className="text-dc-text font-bold text-lg hidden sm:block">
@@ -423,7 +399,7 @@ export default function ContactPage() {
                 {[
                   { icon: "ri-shield-check-line", label: "NDA on request" },
                   { icon: "ri-time-line", label: "Reply in < 48hrs" },
-                  { icon: "ri-global-line", label: "28 countries served" },
+                  { icon: "ri-global-line", label: "Cambodia-rooted, regionally minded" },
                   { icon: "ri-star-line", label: "4.9/5 client rating" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2.5">
@@ -438,6 +414,7 @@ export default function ContactPage() {
 
             {/* Offices */}
             <div className="bg-dc-card border border-dc-text/8 rounded-2xl overflow-hidden">
+              {offices.length > 1 && (
               <div className="flex border-b border-dc-text/8">
                 {offices.map((office, i) => (
                   <button
@@ -453,6 +430,7 @@ export default function ContactPage() {
                   </button>
                 ))}
               </div>
+              )}
               <div className="p-6">
                 <div className="flex flex-col gap-3">
                   <div className="flex items-start gap-3">

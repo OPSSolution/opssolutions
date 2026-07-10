@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { use3DTilt } from "@/hooks/use3DTilt";
@@ -128,7 +129,7 @@ export default function PortfolioLightbox({ project, onClose }: PortfolioLightbo
 
   const metrics = project?.metrics ?? DEFAULT_METRICS;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {project && (
         <>
@@ -370,6 +371,7 @@ export default function PortfolioLightbox({ project, onClose }: PortfolioLightbo
           />
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

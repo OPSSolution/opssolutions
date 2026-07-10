@@ -13,6 +13,8 @@ import IndustriesPage from "../pages/industries/page";
 import IndustryDetailPage from "../pages/industry-detail/page";
 import ContactPage from "../pages/contact/page";
 import WorkCaseStudyPage from "../pages/work-case-study/page";
+import BallangkMallPage from "../pages/ballangk-mall/page";
+import PinexProPage from "../pages/pinex-pro/page";
 import PageTransition from "../components/feature/PageTransition";
 
 const routes: RouteObject[] = [
@@ -35,6 +37,14 @@ const routes: RouteObject[] = [
   {
     path: "/case-studies",
     element: <PageTransition><CaseStudiesPage /></PageTransition>,
+  },
+  {
+    path: "/work/ballangk-mall",
+    element: <PageTransition><BallangkMallPage /></PageTransition>,
+  },
+  {
+    path: "/work/pinex-pro",
+    element: <PageTransition><PinexProPage /></PageTransition>,
   },
   {
     path: "/work/:slug",

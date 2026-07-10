@@ -1,8 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const IMAGE_URL =
-  "https://readdy.ai/api/search-image?query=mobile%20healthcare%20app%20mockup%20on%20smartphone%2C%20clean%20white%20and%20dark%20interface%20with%20medical%20data%20charts%2C%20appointment%20scheduling%20UI%2C%20professional%20product%20photography%20on%20dark%20background%2C%20minimal%20health%20tech%20design&width=800&height=600&seq=portfolio_02&orientation=landscape";
+const IMAGE_URL = "/images/pro-pnp.jpg";
 
 // Reduced from 9 → 6 columns for better GPU performance
 const N = 6;

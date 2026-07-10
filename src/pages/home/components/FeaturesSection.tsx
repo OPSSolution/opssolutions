@@ -32,11 +32,11 @@ const features = [
 ];
 
 const whyUs = [
-  { icon: "ri-team-line", label: "Senior-only engineers", value: "Top 5%" },
-  { icon: "ri-calendar-check-line", label: "On-time delivery rate", value: "97%" },
-  { icon: "ri-translate-2", label: "Languages & timezones", value: "12+" },
-  { icon: "ri-award-line", label: "Industry awards", value: "23" },
-  { icon: "ri-code-box-line", label: "Lines of code shipped", value: "50M+" },
+  { icon: "ri-customer-service-2-line", label: "Client Focus", value: "100%" },
+  { icon: "ri-building-line", label: "Industries Served", value: "3+" },
+  { icon: "ri-smartphone-line", label: "Platforms", value: "Web & Mobile" },
+  { icon: "ri-team-line", label: "Dedicated Team", value: "Growing" },
+  { icon: "ri-calendar-check-line", label: "Support", value: "Ongoing" },
   { icon: "ri-customer-service-2-line", label: "Post-launch support", value: "24/7" },
 ];
 

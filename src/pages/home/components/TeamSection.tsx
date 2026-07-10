@@ -4,64 +4,66 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 const team = [
   {
     id: 1,
-    name: "Jordan Mitchell",
+    name: "Samphors Oem",
     role: "CEO & Founder",
-    bio: "Former CTO at two unicorn startups. Led engineering orgs of 120+ at Scale.ai. Built Solutions to be the software studio he always wished existed.",
-    image: "https://readdy.ai/api/search-image?query=professional%20headshot%20of%20confident%20male%20CEO%20tech%20executive%2C%2040s%2C%20dark%20blazer%2C%20short%20hair%2C%20clean%20studio%20background%2C%20warm%20studio%20lighting%2C%20sharp%20focus%2C%20premium%20business%20portrait%20photography&width=400&height=500&seq=team_01&orientation=portrait",
+    bio: "Founder of OPS Solutions, dedicated to helping businesses build reliable web and mobile applications. Passionate about technology, innovation, and delivering practical digital solutions that create real business value.",
+    image: "/images/teams/team-bongsam.jpg",
     social: { linkedin: "#", twitter: "#", github: "#" },
-    tag: "Leadership",
+    tag: "CEO",
     tagAccent: true,
   },
   {
     id: 2,
-    name: "Yuki Tanaka",
-    role: "Principal Engineer",
-    bio: "Ex-Meta Platform Engineer. Authored 3 open-source npm packages with 500k+ weekly downloads. React and TypeScript architecture specialist.",
-    image: "https://readdy.ai/api/search-image?query=professional%20headshot%20female%20senior%20software%20engineer%2C%20Asian%20woman%2C%2030s%2C%20casual%20tech%20professional%20attire%2C%20dark%20studio%20background%2C%20confident%20smile%2C%20sharp%20focus%2C%20modern%20portrait%20photography&width=400&height=500&seq=team_02&orientation=portrait",
+    name: "Linna Yinloch",
+    role: "IT Project Manager",
+    bio: "Coordinates software projects from planning to delivery, ensuring clear communication, efficient teamwork, and high-quality results. Focused on delivering projects on time while meeting client expectations.",
+    image: "/images/teams/team-linna.jpg",
+    imagePosition: "center 8%",
     social: { linkedin: "#", twitter: "#", github: "#" },
-    tag: "Engineering",
+    tag: "Management",
     tagAccent: false,
   },
   {
     id: 3,
-    name: "Carlos Mendez",
-    role: "Head of Product Design",
-    bio: "Design lead for products serving 20M+ users. Previously at Figma's design consulting practice. Creator of the OpenUI open-source component library.",
-    image: "https://readdy.ai/api/search-image?query=professional%20headshot%20of%20creative%20male%20UX%20designer%2C%20Hispanic%20man%2C%2030s%2C%20stylish%20casual%20attire%2C%20warm%20neutral%20studio%20background%2C%20artistic%20lighting%2C%20confident%20expression%2C%20premium%20portrait%20photography&width=400&height=500&seq=team_03&orientation=portrait",
+    name: "Sreyka Hon",
+    role: "Full-Stack Developer",
+    bio: "Full-stack developer specializing in Laravel, React, and modern web technologies. Passionate about building scalable, user-friendly applications with clean code and reliable performance.",
+    image: "/images/teams/team-sreyka.jpg",
+    imagePosition: "center 35%",
     social: { linkedin: "#", twitter: "#", github: "#" },
-    tag: "Design",
+    tag: "Development",
     tagAccent: true,
   },
-  {
-    id: 4,
-    name: "Anya Volkov",
-    role: "Cloud Infrastructure Lead",
-    bio: "AWS Hero and Kubernetes contributor. Migrated 30+ legacy monoliths to cloud-native. Cuts average infrastructure costs by 55% per client engagement.",
-    image: "https://readdy.ai/api/search-image?query=professional%20headshot%20of%20female%20DevOps%20engineer%2C%20European%20woman%2C%20early%2030s%2C%20smart%20casual%20professional%20attire%2C%20clean%20studio%20background%2C%20natural%20confident%20expression%2C%20premium%20portrait%20photography&width=400&height=500&seq=team_04&orientation=portrait",
-    social: { linkedin: "#", twitter: "#", github: "#" },
-    tag: "Infrastructure",
-    tagAccent: false,
-  },
-  {
-    id: 5,
-    name: "Kai Nakamura",
-    role: "Mobile Engineering Lead",
-    bio: "Built apps for Nike, Starbucks, and Adobe. Has 12 apps in the App Store top 100. React Native and Flutter expert with a product-first mindset.",
-    image: "https://readdy.ai/api/search-image?query=professional%20headshot%20of%20male%20mobile%20developer%2C%20Korean%20man%2C%20late%2020s%2C%20wearing%20casual%20tech%20company%20t-shirt%2C%20modern%20studio%20background%2C%20friendly%20professional%20expression%2C%20sharp%20focus%20portrait%20photography&width=400&height=500&seq=team_05&orientation=portrait",
-    social: { linkedin: "#", twitter: "#", github: "#" },
-    tag: "Mobile",
-    tagAccent: true,
-  },
-  {
-    id: 6,
-    name: "Dr. Nadia Hassan",
-    role: "AI/ML Lead",
-    bio: "Research scientist with 8 published papers on transformer architectures. Built AI features used by 5M+ daily active users across three product lines.",
-    image: "https://readdy.ai/api/search-image?query=professional%20headshot%20female%20AI%20researcher%20data%20scientist%2C%20Black%20woman%2C%2030s%2C%20professional%20smart%20casual%20attire%2C%20minimal%20dark%20background%2C%20intelligent%20focused%20expression%2C%20premium%20high-quality%20portrait%20photography&width=400&height=500&seq=team_06&orientation=portrait",
-    social: { linkedin: "#", twitter: "#", github: "#" },
-    tag: "AI/ML",
-    tagAccent: false,
-  },
+  // {
+  //   id: 4,
+  //   name: "Anya Volkov",
+  //   role: "Cloud Infrastructure Lead",
+  //   bio: "AWS Hero and Kubernetes contributor. Migrated 30+ legacy monoliths to cloud-native. Cuts average infrastructure costs by 55% per client engagement.",
+  //   image: "https://readdy.ai/api/search-image?query=professional%20headshot%20of%20female%20DevOps%20engineer%2C%20European%20woman%2C%20early%2030s%2C%20smart%20casual%20professional%20attire%2C%20clean%20studio%20background%2C%20natural%20confident%20expression%2C%20premium%20portrait%20photography&width=400&height=500&seq=team_04&orientation=portrait",
+  //   social: { linkedin: "#", twitter: "#", github: "#" },
+  //   tag: "Infrastructure",
+  //   tagAccent: false,
+  // },
+  // {
+  //   id: 5,
+  //   name: "Kai Nakamura",
+  //   role: "Mobile Engineering Lead",
+  //   bio: "Built apps for Nike, Starbucks, and Adobe. Has 12 apps in the App Store top 100. React Native and Flutter expert with a product-first mindset.",
+  //   image: "https://readdy.ai/api/search-image?query=professional%20headshot%20of%20male%20mobile%20developer%2C%20Korean%20man%2C%20late%2020s%2C%20wearing%20casual%20tech%20company%20t-shirt%2C%20modern%20studio%20background%2C%20friendly%20professional%20expression%2C%20sharp%20focus%20portrait%20photography&width=400&height=500&seq=team_05&orientation=portrait",
+  //   social: { linkedin: "#", twitter: "#", github: "#" },
+  //   tag: "Mobile",
+  //   tagAccent: true,
+  // },
+  // {
+  //   id: 6,
+  //   name: "Dr. Nadia Hassan",
+  //   role: "AI/ML Lead",
+  //   bio: "Research scientist with 8 published papers on transformer architectures. Built AI features used by 5M+ daily active users across three product lines.",
+  //   image: "https://readdy.ai/api/search-image?query=professional%20headshot%20female%20AI%20researcher%20data%20scientist%2C%20Black%20woman%2C%2030s%2C%20professional%20smart%20casual%20attire%2C%20minimal%20dark%20background%2C%20intelligent%20focused%20expression%2C%20premium%20high-quality%20portrait%20photography&width=400&height=500&seq=team_06&orientation=portrait",
+  //   social: { linkedin: "#", twitter: "#", github: "#" },
+  //   tag: "AI/ML",
+  //   tagAccent: false,
+  // },
 ];
 
 function TeamCard({ member, index }: { member: typeof team[0]; index: number }) {
@@ -81,11 +83,12 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
       whileHover={{ y: -8, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
     >
       {/* Image */}
-      <div className="relative w-full h-72 overflow-hidden">
+      <div className="relative w-full h-80 overflow-hidden">
         <motion.img
           src={member.image}
           alt={member.name}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: member.imagePosition ?? "center" }}
           animate={{ scale: hovered ? 1.06 : 1 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         />

@@ -4,7 +4,6 @@ import { use3DTilt } from "@/hooks/use3DTilt";
 import PortfolioLightbox, { LightboxProject } from "@/pages/home/components/PortfolioLightbox";
 import LivePreviewModal from "@/pages/home/components/LivePreviewModal";
 import CloudSyncFragmentImage from "@/pages/home/components/CloudSyncFragmentImage";
-import NexaShopStripImage from "@/pages/home/components/NexaShopStripImage";
 import FinFlowStripImage from "@/pages/home/components/FinFlowStripImage";
 import MediTrackVenetianImage from "@/pages/home/components/MediTrackVenetianImage";
 import AuraAIPixelImage from "@/pages/home/components/AuraAIPixelImage";
@@ -15,76 +14,88 @@ const categories = ["All", "Web", "Mobile", "Cloud", "AI"];
 const projects = [
   {
     id: 1,
-    title: "NexaShop Platform",
-    category: "Web",
-    description: "A high-performance e-commerce platform processing $2M+ daily transactions with real-time inventory and AI-powered recommendations.",
-    tags: ["React", "Node.js", "Redis", "AWS"],
+    title: "Ballangk Mall",
+    category: "Web & App",
+    description: "A smart marketplace connecting local & global buyers and sellers — built and operated by OPS Solutions.",
+    tags: ["Laravel", "React Native", "Linode", "MySQL"],
     year: "2025",
-    slug: "nexashop-platform",
+    slug: "ballangk-mall",
     number: "01",
-    image: "https://readdy.ai/api/search-image?query=sleek%20dark%20e-commerce%20web%20platform%20dashboard%20on%20multiple%20screens%2C%20modern%20UI%20with%20product%20grids%20and%20analytics%20charts%2C%20dark%20theme%20interface%20with%20green%20accents%2C%20professional%20tech%20photography%20studio%20lighting%2C%20minimalist%20digital%20product%20design&width=800&height=600&seq=portfolio_01&orientation=landscape",
+    image: "/images/pro-bm.png",
     result: "$2M+ daily transactions",
+    challenge: "Cambodia's SMEs needed a trusted, unified marketplace — one where merchants get fair commission control, affiliates and KOLs can earn by promoting, and buyers can shop safely across local and global sellers.",
+    metrics: [
+      { label: "Merchant Goal", value: "10K+" },
+      { label: "User Goal", value: "100K+" },
+      { label: "Affiliate Tiers", value: "3-Level" },
+    ],
   },
   {
     id: 2,
-    title: "MediTrack Mobile",
-    category: "Mobile",
-    description: "Healthcare app used by 300+ clinics to manage patient records, appointments, and remote consultations with HIPAA-compliant security.",
-    tags: ["React Native", "Firebase", "TypeScript"],
+    title: "Pinex Pro",
+    category: "Web & App",
+    description: "Strategic branding, KOL network, and production partner app — built and operated by OPS Solutions.",
+    tags: ["Next.js", "React Native", "DigitalOcean", "PostgreSQL", "AWS"],
     year: "2025",
-    slug: "meditrack-mobile",
+    slug: "pinex-pro",
     number: "02",
-    image: "https://readdy.ai/api/search-image?query=mobile%20healthcare%20app%20mockup%20on%20smartphone%2C%20clean%20white%20and%20dark%20interface%20with%20medical%20data%20charts%2C%20appointment%20scheduling%20UI%2C%20professional%20product%20photography%20on%20dark%20background%2C%20minimal%20health%20tech%20design&width=800&height=600&seq=portfolio_02&orientation=landscape",
-    result: "300+ clinics · 4.9★",
+    image: "/images/pro-pnp.jpg",
+    result: "3 content verticals",
+    challenge: "Merchants and SMEs need real audience reach, not just a storefront. Pinex Pro turns brands into stories through KOL talent, original content, and professional production — feeding engaged audiences back into Ballangk Mall.",
+    metrics: [
+      { label: "Core Services", value: "6" },
+      { label: "App Modules", value: "3" },
+      { label: "Feeds Into", value: "Ballangk Mall" },
+    ],
   },
   {
     id: 3,
-    title: "FinFlow Dashboard",
+    title: "Pinex Agro Company Website",
     category: "Web",
-    description: "Real-time financial analytics dashboard for a Series B fintech startup, handling complex data visualization and multi-currency transactions.",
-    tags: ["Vue.js", "D3.js", "Python", "PostgreSQL"],
+    description: "Corporate website for Pinex Agro, showcasing the group's agriculture brand, products, and story — built and operated by OPS Solutions.",
+    tags: ["PHP", "MySQL", "cPanel",],
     year: "2024",
-    slug: "finflow-dashboard",
+    slug: "pinex-agro-website",
     number: "03",
-    image: "https://readdy.ai/api/search-image?query=financial%20analytics%20dashboard%20on%20widescreen%20monitor%2C%20dark%20interface%20with%20green%20neon%20data%20charts%20and%20graphs%2C%20cryptocurrency%20and%20finance%20metrics%2C%20cinematic%20studio%20setup%2C%20high-tech%20trading%20platform%20aesthetic%2C%20dramatic%20lighting&width=800&height=600&seq=portfolio_03&orientation=landscape",
+    image: "/images/pro-pnex.jpg",
     result: "50k users at launch",
   },
-  {
-    id: 4,
-    title: "CloudSync Infrastructure",
-    category: "Cloud",
-    description: "Multi-cloud infrastructure for a logistics company, reducing deployment time by 80% and achieving 99.99% uptime with auto-scaling.",
-    tags: ["AWS", "Terraform", "Docker", "Datadog"],
-    year: "2024",
-    slug: "cloudsync-infrastructure",
-    number: "04",
-    image: "https://readdy.ai/api/search-image?query=cloud%20infrastructure%20architecture%20diagram%20on%20dark%20background%2C%20server%20rooms%20with%20glowing%20cables%20and%20LED%20lights%2C%20data%20center%20technology%20visualization%2C%20network%20topology%20with%20green%20connection%20nodes%2C%20futuristic%20server%20management%20interface&width=800&height=600&seq=portfolio_04&orientation=landscape",
-    result: "80% faster deploys",
-  },
-  {
-    id: 5,
-    title: "AuraAI Content Engine",
-    category: "AI",
-    description: "AI-powered content generation platform with fine-tuned LLMs, producing 10,000+ pieces of branded content monthly across 14 languages.",
-    tags: ["Python", "LangChain", "OpenAI", "FastAPI"],
-    year: "2025",
-    slug: "auraai-content-engine",
-    number: "05",
-    image: "https://readdy.ai/api/search-image?query=artificial%20intelligence%20content%20generation%20interface%2C%20neural%20network%20visualization%20with%20glowing%20nodes%20on%20dark%20background%2C%20AI%20text%20generation%20UI%20with%20code%20and%20language%20models%2C%20futuristic%20machine%20learning%20platform%2C%20lime%20green%20accent%20colors%2C%20cinematic%20digital%20art&width=800&height=600&seq=portfolio_05&orientation=landscape",
-    result: "10k+ pieces/month",
-  },
-  {
-    id: 6,
-    title: "SmartHome Connect",
-    category: "Mobile",
-    description: "IoT home automation app controlling 200+ device types, featuring voice commands, energy analytics, and geofencing automation routines.",
-    tags: ["Flutter", "MQTT", "Golang", "InfluxDB"],
-    year: "2025",
-    slug: "smarthome-connect",
-    number: "06",
-    image: "https://readdy.ai/api/search-image?query=smart%20home%20IoT%20app%20interface%20on%20tablet%20and%20phone%20mockups%2C%20modern%20living%20room%20with%20ambient%20lighting%20controls%2C%20dark%20themed%20mobile%20interface%20with%20device%20management%2C%20home%20automation%20dashboard%2C%20tech%20product%20photography%20with%20soft%20ambient%20glow&width=800&height=600&seq=portfolio_06&orientation=landscape",
-    result: "200+ device types",
-  },
+  // {
+  //   id: 4,
+  //   title: "CloudSync Infrastructure",
+  //   category: "Cloud",
+  //   description: "Multi-cloud infrastructure for a logistics company, reducing deployment time by 80% and achieving 99.99% uptime with auto-scaling.",
+  //   tags: ["AWS", "Terraform", "Docker", "Datadog"],
+  //   year: "2024",
+  //   slug: "cloudsync-infrastructure",
+  //   number: "04",
+  //   image: "https://readdy.ai/api/search-image?query=cloud%20infrastructure%20architecture%20diagram%20on%20dark%20background%2C%20server%20rooms%20with%20glowing%20cables%20and%20LED%20lights%2C%20data%20center%20technology%20visualization%2C%20network%20topology%20with%20green%20connection%20nodes%2C%20futuristic%20server%20management%20interface&width=800&height=600&seq=portfolio_04&orientation=landscape",
+  //   result: "80% faster deploys",
+  // },
+  // {
+  //   id: 5,
+  //   title: "AuraAI Content Engine",
+  //   category: "AI",
+  //   description: "AI-powered content generation platform with fine-tuned LLMs, producing 10,000+ pieces of branded content monthly across 14 languages.",
+  //   tags: ["Python", "LangChain", "OpenAI", "FastAPI"],
+  //   year: "2025",
+  //   slug: "auraai-content-engine",
+  //   number: "05",
+  //   image: "https://readdy.ai/api/search-image?query=artificial%20intelligence%20content%20generation%20interface%2C%20neural%20network%20visualization%20with%20glowing%20nodes%20on%20dark%20background%2C%20AI%20text%20generation%20UI%20with%20code%20and%20language%20models%2C%20futuristic%20machine%20learning%20platform%2C%20lime%20green%20accent%20colors%2C%20cinematic%20digital%20art&width=800&height=600&seq=portfolio_05&orientation=landscape",
+  //   result: "10k+ pieces/month",
+  // },
+  // {
+  //   id: 6,
+  //   title: "SmartHome Connect",
+  //   category: "Mobile",
+  //   description: "IoT home automation app controlling 200+ device types, featuring voice commands, energy analytics, and geofencing automation routines.",
+  //   tags: ["Flutter", "MQTT", "Golang", "InfluxDB"],
+  //   year: "2025",
+  //   slug: "smarthome-connect",
+  //   number: "06",
+  //   image: "https://readdy.ai/api/search-image?query=smart%20home%20IoT%20app%20interface%20on%20tablet%20and%20phone%20mockups%2C%20modern%20living%20room%20with%20ambient%20lighting%20controls%2C%20dark%20themed%20mobile%20interface%20with%20device%20management%2C%20home%20automation%20dashboard%2C%20tech%20product%20photography%20with%20soft%20ambient%20glow&width=800&height=600&seq=portfolio_06&orientation=landscape",
+  //   result: "200+ device types",
+  // },
 ];
 
 function ProjectCard({ project, index, onPreview, onLivePreview }: { project: typeof projects[0]; index: number; onPreview: (p: LightboxProject) => void; onLivePreview: (p: typeof projects[0]) => void }) {
@@ -107,20 +118,18 @@ function ProjectCard({ project, index, onPreview, onLivePreview }: { project: ty
         scale: 0.82,
         rotateX: 22,
         rotateY: index % 2 === 0 ? -14 : 14,
-        filter: "blur(12px)",
       }}
       animate={
         inView
-          ? { opacity: 1, y: 0, z: 0, scale: 1, rotateX: 0, rotateY: 0, filter: "blur(0px)" }
+          ? { opacity: 1, y: 0, z: 0, scale: 1, rotateX: 0, rotateY: 0 }
           : {}
       }
-      exit={{ opacity: 0, scale: 0.9, z: -100, filter: "blur(8px)", transition: { duration: 0.3 } }}
+      exit={{ opacity: 0, scale: 0.9, z: -100, transition: { duration: 0.3 } }}
       transition={{
         duration: 0.85,
         delay: index * 0.16,
         ease: [0.16, 1, 0.3, 1],
         opacity: { duration: 0.55, delay: index * 0.16 },
-        filter: { duration: 0.55, delay: index * 0.16 },
       }}
       onClick={() => onPreview(project as LightboxProject)}
       onMouseMove={handleMouseMove}
@@ -132,8 +141,6 @@ function ProjectCard({ project, index, onPreview, onLivePreview }: { project: ty
       {/* Background image — each featured card gets its own 3D assembly effect */}
       {project.id === 4 ? (
         <CloudSyncFragmentImage triggered={inView} hovered={hovered} />
-      ) : project.id === 1 ? (
-        <NexaShopStripImage triggered={inView} />
       ) : project.id === 3 ? (
         <FinFlowStripImage triggered={inView} />
       ) : project.id === 2 ? (

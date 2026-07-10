@@ -1,8 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const IMAGE_URL =
-  "https://readdy.ai/api/search-image?query=financial%20analytics%20dashboard%20on%20widescreen%20monitor%2C%20dark%20interface%20with%20green%20neon%20data%20charts%20and%20graphs%2C%20cryptocurrency%20and%20finance%20metrics%2C%20cinematic%20studio%20setup%2C%20high-tech%20trading%20platform%20aesthetic%2C%20dramatic%20lighting&width=800&height=600&seq=portfolio_03&orientation=landscape";
+const IMAGE_URL = "/images/pro-pnex.jpg";
 
 const N = 5; // number of horizontal strips
 

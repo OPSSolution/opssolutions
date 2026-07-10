@@ -3,7 +3,7 @@ import { motion, useMotionValue, useScroll, useSpring, useTransform } from "fram
 import { useTheme } from "@/hooks/useTheme";
 import HeroCanvas from "@/components/feature/HeroCanvas";
 
-const headlineWords = ["We", "Craft", "Software", "That", "Drives", "Real", "Growth."];
+const headlineWords = ["Build the Technology", "", "Power the Ecosystem", "Empower", "", "SMEs"];
 
 const tagline =
   "From MVPs to enterprise platforms — we build scalable web apps, mobile experiences, and AI-powered systems for companies that refuse to settle for average.";
@@ -480,9 +480,9 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 1.6 }}
         >
           {[
-            { value: 180, suffix: "+", label: "Projects Shipped" },
+            { value: 6, suffix: "+", label: "Projects Shipped" },
             { value: 98, suffix: "%", label: "Client Satisfaction" },
-            { value: 10, suffix: "+", label: "Years in Business" },
+            { value: 2, suffix: "+", label: "Years in Business" },
             { value: 60, suffix: "+", label: "Expert Engineers" },
           ].map((stat) => (
             <div key={stat.label}>

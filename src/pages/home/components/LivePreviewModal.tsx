@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Project {
@@ -398,7 +399,7 @@ export default function LivePreviewModal({ project, onClose }: LivePreviewModalP
   const DemoComponent = project ? demoMap[project.id] : null;
   const demoSlug = project ? slugMap[project.id] : "";
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {project && (
         <>
@@ -510,6 +511,7 @@ export default function LivePreviewModal({ project, onClose }: LivePreviewModalP
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

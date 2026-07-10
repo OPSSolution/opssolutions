@@ -1,8 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const IMAGE_URL =
-  "https://readdy.ai/api/search-image?query=sleek%20dark%20e-commerce%20web%20platform%20dashboard%20on%20multiple%20screens%2C%20modern%20UI%20with%20product%20grids%20and%20analytics%20charts%2C%20dark%20theme%20interface%20with%20green%20accents%2C%20professional%20tech%20photography%20studio%20lighting%2C%20minimalist%20digital%20product%20design&width=800&height=600&seq=portfolio_01&orientation=landscape";
+const IMAGE_URL = "/images/pro-bm.png";
 
 const N = 7;
 const DIAG = 9; // diagonal offset in %
@@ -59,7 +58,7 @@ export default function NexaShopStripImage({ triggered = false }: Props) {
           style={{
             backgroundImage: `url(${IMAGE_URL})`,
             backgroundSize: "cover",
-            backgroundPosition: "center top",
+            backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             clipPath: strip.clipPath,
             transformStyle: "preserve-3d",

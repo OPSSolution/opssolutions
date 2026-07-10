@@ -90,9 +90,9 @@ export default function ContactSection() {
 
             <div className="flex flex-col gap-5">
               {[
-                { icon: "ri-mail-line", label: "Email Us", value: "hello@devcraftstudio.com" },
-                { icon: "ri-phone-line", label: "Call Us", value: "+1 (555) 234-5678" },
-                { icon: "ri-map-pin-2-line", label: "Our Office", value: "San Francisco, CA 94105" },
+                { icon: "ri-mail-line", label: "Email Us", value: "info@ballangkmall.com" },
+                { icon: "ri-phone-line", label: "Call Us", value: "+855 10 660 661" },
+                { icon: "ri-map-pin-2-line", label: "Our Office", value: "TK Roundabout, 2nd Floor, Street 289, Sangkat Boeng Kak Ti Pir, Khan Toul Kork, Phnom Penh, Cambodia" },
                 { icon: "ri-time-line", label: "Response Time", value: "Within 24 hours" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">

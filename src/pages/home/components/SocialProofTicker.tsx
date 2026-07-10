@@ -224,10 +224,10 @@ const proofItems = [
 ];
 
 const stats = [
-  { icon: "ri-rocket-2-line", value: 183, suffix: "+", label: "Projects Shipped", sub: "Across all verticals", color: "#29abe2" },
+  { icon: "ri-rocket-2-line", value: 4, suffix: "+", label: "Projects Shipped", sub: "Across all verticals", color: "#29abe2" },
   { icon: "ri-timer-flash-line", value: 7.4, suffix: " wks", decimals: 1, label: "Avg. Launch Time", sub: "From kickoff to live", color: "#6cffcb" },
   { icon: "ri-heart-3-line", value: 98, suffix: "%", label: "Client Retention", sub: "Clients who come back", color: "#ff9f43" },
-  { icon: "ri-global-line", value: 28, suffix: "", label: "Countries Served", sub: "Global client base", color: "#29abe2" },
+  { icon: "ri-global-line", value: 1, suffix: "", label: "Countries Served", sub: "Global client base", color: "#29abe2" },
   { icon: "ri-code-s-slash-line", value: 50, suffix: "M+", label: "Lines Shipped", sub: "In production codebases", color: "#6cffcb" },
   { icon: "ri-team-line", value: 60, suffix: "+", label: "Expert Engineers", sub: "Across 12 timezones", color: "#ffd93d" },
 ];

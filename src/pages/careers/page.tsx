@@ -504,7 +504,7 @@ export default function CareersPage() {
                         </button>
                         <p className="text-white/20 text-xs text-center">
                           Or email directly:<br />
-                          <span className="text-white/35">careers@devcraftstudio.com</span>
+                          <span className="text-white/35">careers@ballangkmall.com</span>
                         </p>
                       </div>
                     </div>
@@ -565,7 +565,7 @@ export default function CareersPage() {
             If you&apos;re genuinely world-class at what you do and believe in building great software, we want to hear from you — role or no role.
           </p>
           <a
-            href="mailto:careers@devcraftstudio.com"
+            href="mailto:careers@ballangkmall.com"
             rel="nofollow"
             className="inline-flex items-center gap-2 bg-[#a3e635] text-black font-bold px-8 py-4 rounded-full hover:bg-white transition-colors duration-300 cursor-pointer whitespace-nowrap"
           >
