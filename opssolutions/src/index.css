@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base font size — makes all rem-based text larger ===== */
+html {
+  font-size: 17px;
+}
+
+/* ===== OPS Solutions Theme Variables ===== */
+:root {
+  --dc-text: 255 255 255;
+  --dc-bg: 8 13 26;
+  --dc-surface: 12 20 38;
+  --dc-card: 15 28 54;
+  --dc-input: 21 37 66;
+  --dc-border: 41 171 226;
+  --dc-muted: 150 175 215;
+}
+
+/* ===== Body theme binding ===== */
+body {
+  background-color: rgb(var(--dc-bg) / 1);
+  color: rgb(var(--dc-text) / 1);
+}
+
+/* Ensure all pages respond to theme */
+#root {
+  background-color: rgb(var(--dc-bg) / 1);
+  min-height: 100vh;
+}
+
