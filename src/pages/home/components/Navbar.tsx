@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -87,9 +88,12 @@ export default function Navbar() {
       const sections = homeLinks.map((l) => l.href.replace("#", ""));
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(sections[i]);
-          break;
+        if (el) {
+          const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
+          if (window.scrollY >= absoluteTop - 120) {
+            setActiveSection(sections[i]);
+            break;
+          }
         }
       }
     };
@@ -137,7 +141,7 @@ export default function Navbar() {
     location.pathname === "/careers" ||
     location.pathname === "/contact";
 
-  return (
+  return createPortal(
     <>
       {/* ── Scroll Progress Bar ── */}
       <motion.div
@@ -153,7 +157,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
             ? "bg-dc-bg/95 backdrop-blur-md border-b border-dc-text/8"
-            : "bg-transparent"
+            : "bg-dc-bg/40 backdrop-blur-sm border-b border-transparent"
         }`}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -164,13 +168,18 @@ export default function Navbar() {
           <button onClick={() => navigate("/")} className="flex items-center gap-3 cursor-pointer shrink-0">
             <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
               <img
-                src="https://static.readdy.ai/image/27f36426f3cab7c4efebb6eb9e24cb04/3338f66b55262222ff9be144548b1ced.png"
+                src="/images/logo.jpg"
                 alt="Solutions Studio Logo"
-                className="h-16 w-auto object-contain"
+                className="h-16 w-16 object-cover rounded-full"
               />
             </motion.div>
-            <span className="text-dc-text font-bold text-3xl tracking-tight hidden sm:block">
-              Solutions<span className="text-accent">.</span>
+            <span className="hidden sm:flex flex-col gap-1">
+              <span className="text-dc-text font-bold text-xl leading-none tracking-tight">
+                OPS <span className="text-accent">Solutions</span>
+              </span>
+              <span className="text-dc-text/40 text-[10px] font-mono tracking-[0.2em] uppercase leading-none">
+                Co., Ltd. · Cambodia
+              </span>
             </span>
           </button>
 
@@ -366,6 +375,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </>,
+    document.body
   );
 }

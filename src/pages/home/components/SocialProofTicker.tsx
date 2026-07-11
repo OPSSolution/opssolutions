@@ -61,20 +61,22 @@ interface StatCardProps {
 }
 
 function StatCard({ icon, value, prefix, suffix, decimals, label, sub, color, delay }: StatCardProps) {
-  const { ref, style } = use3DTilt({ maxTilt: 12, scale: 1.04 });
+  const { cardRef: tiltRef, rotateX, rotateY, handleMouseMove, handleMouseLeave } = use3DTilt({ maxRotateX: 10, maxRotateY: 10 });
   const cardRef = useRef<HTMLDivElement>(null);
   const inView = useInView(cardRef, { once: true, margin: "-60px" });
 
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
-      animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       <motion.div
-        ref={ref as React.RefObject<HTMLDivElement>}
-        style={{ ...style, transformStyle: "preserve-3d" }}
+        ref={tiltRef as React.RefObject<HTMLDivElement>}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, transformPerspective: 800, transformStyle: "preserve-3d" }}
         className="relative group bg-dc-card/60 border border-dc-text/8 rounded-2xl p-6 cursor-default overflow-hidden hover:border-accent/30 transition-colors duration-300"
       >
         {/* Background glow on hover */}
@@ -397,12 +399,11 @@ export default function SocialProofTicker() {
               style={{ background: "linear-gradient(90deg, var(--color-dc-bg, #0a0a0a) 0%, transparent 100%)" }} />
             <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
               style={{ background: "linear-gradient(270deg, var(--color-dc-bg, #0a0a0a) 0%, transparent 100%)" }} />
-            <motion.div
-              className="flex gap-8 whitespace-nowrap"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            <div
+              className="flex gap-8 whitespace-nowrap w-max"
+              style={{ animation: "social-proof-marquee 30s linear infinite" }}
             >
-              {[0, 1].map((outerIdx) => (
+              {[0, 1, 2].map((outerIdx) => (
                 <div key={outerIdx} className="flex gap-8 shrink-0">
                   {proofItems.map(([icon, text]) => (
                     <span
@@ -416,7 +417,13 @@ export default function SocialProofTicker() {
                   ))}
                 </div>
               ))}
-            </motion.div>
+            </div>
+            <style>{`
+              @keyframes social-proof-marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-33.333%); }
+              }
+            `}</style>
           </div>
         </motion.div>
       </div>

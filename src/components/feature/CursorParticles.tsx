@@ -4,9 +4,11 @@ import { useRef, useEffect } from "react";
  * CursorParticles
  *
  * A full-screen canvas that renders a glowing particle trail following the
- * cursor. Each particle is a radial-gradient circle that fades out and drifts
- * slightly upward. Particles are spawned proportionally to cursor velocity so
- * fast sweeps produce dense trails, gentle movements leave delicate dots.
+ * cursor. Each particle is drawn from a pre-rendered glow sprite (baked once
+ * on an offscreen canvas) instead of constructing a radial gradient per
+ * particle per frame — gradient construction is the expensive part of canvas
+ * particle systems, so this keeps the per-frame draw loop to a single cheap
+ * drawImage call per particle.
  *
  * Only active on non-touch (pointer) devices.
  */
@@ -21,6 +23,34 @@ interface Particle {
   size: number;
 }
 
+const MAX_PARTICLES = 60;
+const SPRITE_SIZE = 128; // px, offscreen sprite resolution
+
+function makeGlowSprite(): HTMLCanvasElement {
+  const sprite = document.createElement("canvas");
+  sprite.width = SPRITE_SIZE;
+  sprite.height = SPRITE_SIZE;
+  const sctx = sprite.getContext("2d")!;
+  const c = SPRITE_SIZE / 2;
+
+  const g = sctx.createRadialGradient(c, c, 0, c, c, c);
+  g.addColorStop(0, "rgba(41,171,226,1)");
+  g.addColorStop(0.45, "rgba(41,171,226,0.4)");
+  g.addColorStop(1, "rgba(41,171,226,0)");
+  sctx.fillStyle = g;
+  sctx.beginPath();
+  sctx.arc(c, c, c, 0, Math.PI * 2);
+  sctx.fill();
+
+  // Bright core dot
+  sctx.beginPath();
+  sctx.arc(c, c, c * 0.14, 0, Math.PI * 2);
+  sctx.fillStyle = "rgba(230,255,160,0.9)";
+  sctx.fill();
+
+  return sprite;
+}
+
 export default function CursorParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -32,6 +62,8 @@ export default function CursorParticles() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    const sprite = makeGlowSprite();
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -53,16 +85,18 @@ export default function CursorParticles() {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
 
-      // Spawn count scales with speed (1 … 6)
-      const count = Math.min(Math.floor(speed * 0.45) + 1, 6);
-      for (let i = 0; i < count; i++) {
+      if (particles.length >= MAX_PARTICLES) return;
+
+      // Spawn count scales with speed (1 … 3)
+      const count = Math.min(Math.floor(speed * 0.25) + 1, 3);
+      for (let i = 0; i < count && particles.length < MAX_PARTICLES; i++) {
         particles.push({
           x: mouse.x + (Math.random() - 0.5) * 6,
           y: mouse.y + (Math.random() - 0.5) * 6,
           vx: (Math.random() - 0.5) * 1.4 + dx * 0.12,
           vy: (Math.random() - 0.5) * 1.4 + dy * 0.12 - 0.4,
           life: 1,
-          decay: 0.022 + Math.random() * 0.025,
+          decay: 0.035 + Math.random() * 0.035,
           size: 2.5 + Math.random() * 4,
         });
       }
@@ -77,6 +111,7 @@ export default function CursorParticles() {
 
       // Clear — fully transparent each frame
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (particles.length === 0) return;
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
@@ -96,25 +131,12 @@ export default function CursorParticles() {
 
         // Eased alpha
         const alpha = Math.pow(p.life, 1.4) * 0.8;
-        const radius = p.size * Math.pow(p.life, 0.5);
+        const radius = p.size * Math.pow(p.life, 0.5) * 2.5;
 
-        // Radial glow gradient
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 2.5);
-        g.addColorStop(0, `rgba(41,171,226,${alpha})`);
-        g.addColorStop(0.45, `rgba(41,171,226,${alpha * 0.4})`);
-        g.addColorStop(1, `rgba(41,171,226,0)`);
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, radius * 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = g;
-        ctx.fill();
-
-        // Bright core dot
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, radius * 0.35, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(230,255,160,${alpha * 0.9})`;
-        ctx.fill();
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(sprite, p.x - radius, p.y - radius, radius * 2, radius * 2);
       }
+      ctx.globalAlpha = 1;
     };
 
     draw();

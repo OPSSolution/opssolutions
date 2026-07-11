@@ -14,7 +14,7 @@ interface Section3DRevealProps {
  * Wraps a section with a scroll-triggered 3D entrance:
  *   - Starts tilted back on the X-axis (rotateX: 14°) and shifted down
  *   - Springs forward into flat, natural position as it enters the viewport
- *   - Combined with a blur-clear and opacity fade for maximum impact
+ *   - Combined with an opacity fade for maximum impact
  */
 export default function Section3DReveal({
   children,
@@ -27,13 +27,11 @@ export default function Section3DReveal({
         opacity: 0,
         y: 90,
         rotateX: 14,
-        filter: "blur(6px)",
       }}
       whileInView={{
         opacity: 1,
         y: 0,
         rotateX: 0,
-        filter: "blur(0px)",
       }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{

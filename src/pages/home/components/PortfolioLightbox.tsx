@@ -135,7 +135,7 @@ export default function PortfolioLightbox({ project, onClose }: PortfolioLightbo
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 z-[80] bg-black/75 backdrop-blur-md"
+            className="fixed inset-0 z-[80] bg-black/85"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -157,12 +157,11 @@ export default function PortfolioLightbox({ project, onClose }: PortfolioLightbo
               style={{ boxShadow: "0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(41,171,226,0.08)" }}
             >
               {/* ─── Left: Image pane ─────────────────────────────── */}
-              <div className="relative w-full lg:w-[55%] shrink-0 overflow-hidden" style={{ minHeight: "260px", maxHeight: "90vh" }}>
+              <div className="relative w-full h-[220px] sm:h-[260px] lg:h-auto lg:w-[55%] lg:min-h-[260px] lg:max-h-[90vh] shrink-0 overflow-hidden bg-white">
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover object-top"
-                  style={{ minHeight: "260px" }}
+                  className="w-full h-full object-contain"
                   initial={{ scale: 1.08 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -221,7 +220,7 @@ export default function PortfolioLightbox({ project, onClose }: PortfolioLightbo
               </div>
 
               {/* ─── Right: Details pane ──────────────────────────── */}
-              <div className="flex flex-col flex-1 overflow-y-auto p-7 md:p-10 gap-6 relative">
+              <div className="flex flex-col flex-1 min-h-0 overflow-y-auto p-7 md:p-10 gap-6 relative">
                 {/* Close button */}
                 <motion.button
                   onClick={onClose}

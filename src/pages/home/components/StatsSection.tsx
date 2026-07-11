@@ -12,12 +12,12 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 47, suffix: "", label: "Projects This Year", sublabel: "Shipped to production", icon: "ri-rocket-2-line" },
-  { value: 8, suffix: " wks", label: "Avg. Launch Time", sublabel: "From kickoff to live", icon: "ri-timer-flash-line" },
+  { value: 6, suffix: "", label: "Projects This Year", sublabel: "Shipped to production", icon: "ri-rocket-2-line" },
+  { value: 100, suffix: "%",label: "Custom Solutions", sublabel: "Built to client needs", icon: "ri-code-s-slash-line",},
   { value: 98, suffix: "%", label: "Client Retention", sublabel: "Clients who come back", icon: "ri-heart-3-line" },
-  { value: 60, suffix: "+", label: "Active Engineers", sublabel: "Across 12 timezones", icon: "ri-team-line" },
-  { value: 50, suffix: "M+", label: "Lines of Code", sublabel: "Shipped in production", icon: "ri-code-s-slash-line" },
-  { value: 28, suffix: "", label: "Countries Served", sublabel: "Global client footprint", icon: "ri-global-line" },
+  { value: 1, suffix: "", label: "Mission", sublabel: "Building reliable software", icon: "ri-lightbulb-line",},
+  { value: 10,suffix: "+", label: "Technologies", sublabel: "Laravel, React, Flutter & more", icon: "ri-stack-line",},
+  { value: 100,suffix: "%", label: "Commitment", sublabel: "Focused on client success", icon: "ri-customer-service-2-line",},
 ];
 
 // ─── Odometer digit reel ─────────────────────────────────────────────────────
@@ -125,17 +125,16 @@ function StatCard({ item, index }: { item: StatItem; index: number }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: yOffset, rotateX: 18, filter: "blur(8px)" }}
+      initial={{ opacity: 0, y: yOffset, rotateX: 18 }}
       animate={
         inView
-          ? { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }
+          ? { opacity: 1, y: 0, rotateX: 0 }
           : {}
       }
       transition={{
         duration: 0.75,
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
-        filter: { duration: 0.5, delay: index * 0.1 },
       }}
       whileHover={{
         y: -6,
@@ -264,15 +263,14 @@ export default function StatsSection() {
           ))}
         </div>
 
-        {/* Marquee strip */}
+        {/* Marquee strip — pure CSS animation, no JS frame cost */}
         <div className="mt-16 overflow-hidden">
-          <motion.div
-            className="flex gap-10 whitespace-nowrap"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+          <div
+            className="flex gap-10 whitespace-nowrap w-max"
+            style={{ animation: "stats-marquee 22s linear infinite" }}
           >
-            {[...Array(2)].map((_, outerIdx) => (
-              <div key={outerIdx} className="flex gap-10">
+            {[...Array(3)].map((_, outerIdx) => (
+              <div key={outerIdx} className="flex gap-10 shrink-0">
                 {[
                   ["ri-trophy-line", "97% On-Time Delivery"],
                   ["ri-shield-check-line", "Zero Critical CVEs"],
@@ -292,7 +290,13 @@ export default function StatsSection() {
                 ))}
               </div>
             ))}
-          </motion.div>
+          </div>
+          <style>{`
+            @keyframes stats-marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-33.333%); }
+            }
+          `}</style>
         </div>
       </div>
     </section>

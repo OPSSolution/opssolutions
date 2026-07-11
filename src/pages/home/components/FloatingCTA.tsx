@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -70,7 +71,7 @@ export default function FloatingCTA() {
   // Hide on contact page
   if (location.pathname === "/contact") return null;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {pillState !== "hidden" && (
         <motion.div
@@ -180,6 +181,7 @@ export default function FloatingCTA() {
           </AnimatePresence>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

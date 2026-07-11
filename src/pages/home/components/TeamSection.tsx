@@ -5,9 +5,10 @@ const team = [
   {
     id: 1,
     name: "Samphors Oem",
-    role: "CEO & Founder",
+    role: "CEO",
     bio: "Founder of OPS Solutions, dedicated to helping businesses build reliable web and mobile applications. Passionate about technology, innovation, and delivering practical digital solutions that create real business value.",
     image: "/images/teams/team-bongsam.jpg",
+    imagePosition: "center 30%",
     social: { linkedin: "#", twitter: "#", github: "#" },
     tag: "CEO",
     tagAccent: true,

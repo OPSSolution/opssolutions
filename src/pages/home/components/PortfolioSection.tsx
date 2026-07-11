@@ -1,11 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, memo } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { use3DTilt } from "@/hooks/use3DTilt";
 import PortfolioLightbox, { LightboxProject } from "@/pages/home/components/PortfolioLightbox";
 import LivePreviewModal from "@/pages/home/components/LivePreviewModal";
 import CloudSyncFragmentImage from "@/pages/home/components/CloudSyncFragmentImage";
-import FinFlowStripImage from "@/pages/home/components/FinFlowStripImage";
-import MediTrackVenetianImage from "@/pages/home/components/MediTrackVenetianImage";
 import AuraAIPixelImage from "@/pages/home/components/AuraAIPixelImage";
 import SmartHomeIrisImage from "@/pages/home/components/SmartHomeIrisImage";
 
@@ -98,7 +96,7 @@ const projects = [
   // },
 ];
 
-function ProjectCard({ project, index, onPreview, onLivePreview }: { project: typeof projects[0]; index: number; onPreview: (p: LightboxProject) => void; onLivePreview: (p: typeof projects[0]) => void }) {
+const ProjectCard = memo(function ProjectCard({ project, index, onPreview, onLivePreview }: { project: typeof projects[0]; index: number; onPreview: (p: LightboxProject) => void; onLivePreview: (p: typeof projects[0]) => void }) {
   const [hovered, setHovered] = useState(false);
   const inViewRef = useRef<HTMLDivElement>(null);
   const inView = useInView(inViewRef, { once: true, margin: "-60px" });
@@ -111,25 +109,13 @@ function ProjectCard({ project, index, onPreview, onLivePreview }: { project: ty
         (cardRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
       }}
       layout
-      initial={{
-        opacity: 0,
-        y: 90,
-        z: -220,
-        scale: 0.82,
-        rotateX: 22,
-        rotateY: index % 2 === 0 ? -14 : 14,
-      }}
-      animate={
-        inView
-          ? { opacity: 1, y: 0, z: 0, scale: 1, rotateX: 0, rotateY: 0 }
-          : {}
-      }
-      exit={{ opacity: 0, scale: 0.9, z: -100, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      exit={{ opacity: 0, transition: { duration: 0.25 } }}
       transition={{
-        duration: 0.85,
-        delay: index * 0.16,
+        duration: 0.5,
+        delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1],
-        opacity: { duration: 0.55, delay: index * 0.16 },
       }}
       onClick={() => onPreview(project as LightboxProject)}
       onMouseMove={handleMouseMove}
@@ -141,10 +127,6 @@ function ProjectCard({ project, index, onPreview, onLivePreview }: { project: ty
       {/* Background image — each featured card gets its own 3D assembly effect */}
       {project.id === 4 ? (
         <CloudSyncFragmentImage triggered={inView} hovered={hovered} />
-      ) : project.id === 3 ? (
-        <FinFlowStripImage triggered={inView} />
-      ) : project.id === 2 ? (
-        <MediTrackVenetianImage triggered={inView} hovered={hovered} />
       ) : project.id === 5 ? (
         <AuraAIPixelImage triggered={inView} hovered={hovered} />
       ) : project.id === 6 ? (
@@ -300,7 +282,7 @@ function ProjectCard({ project, index, onPreview, onLivePreview }: { project: ty
       />
     </motion.article>
   );
-}
+});
 
 export default function PortfolioSection() {
   const [activeCategory, setActiveCategory] = useState("All");

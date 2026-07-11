@@ -482,7 +482,7 @@ export default function HeroSection() {
           {[
             { value: 6, suffix: "+", label: "Projects Shipped" },
             { value: 98, suffix: "%", label: "Client Satisfaction" },
-            { value: 2, suffix: "+", label: "Years in Business" },
+            { value: 1, suffix: "+", label: "Years in Business" },
             { value: 60, suffix: "+", label: "Expert Engineers" },
           ].map((stat) => (
             <div key={stat.label}>

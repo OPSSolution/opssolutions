@@ -405,7 +405,7 @@ export default function LivePreviewModal({ project, onClose }: LivePreviewModalP
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 z-[95] bg-black/85 backdrop-blur-xl"
+            className="fixed inset-0 z-[95] bg-black/92"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

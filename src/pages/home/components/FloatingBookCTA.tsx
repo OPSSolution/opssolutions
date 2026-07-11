@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -43,7 +44,7 @@ export default function FloatingBookCTA() {
   if (location.pathname === "/contact") return null;
   if (dismissed) return null;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {visible && (
         <motion.div
@@ -155,6 +156,7 @@ export default function FloatingBookCTA() {
           </div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
